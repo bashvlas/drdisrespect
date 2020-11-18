@@ -168,13 +168,25 @@
 
 		};
 
+		function handle_tick_long () {
+
+			chrome.runtime.sendMessage( "get_stream_data", function ( data ) {
+
+				_state.stream_data = data;
+				create_and_render_model();
+
+			});
+
+		};
+
 		setInterval( handle_tick, 1000 );
+		setInterval( handle_tick_long, 3 * 60 * 1000 );
 
 		chrome.runtime.sendMessage( "get_stream_data", function ( data ) {
 
 			_state.stream_data = data;
 			create_and_render_model();
 
-		})
+		});
 
 	} () );
