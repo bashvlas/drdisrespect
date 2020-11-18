@@ -1,0 +1,68 @@
+{
+
+	"manifest_version": 2,
+
+	"name": "Dr Disrespect Chrome Extension",
+	"short_name": "DrDisRespect",
+	"version": "1.0.0",
+	"description": "This chrome extesion helps to keep track of the most dominant stream in the online gaming community",
+
+	"icons": {
+
+		"128": "/img/logo_128.png"
+
+	},
+
+	"browser_action": {
+
+		"default_icon": "/img/logo_16.png",
+		"default_popup": "/pages/popup/index.html"
+
+	},
+
+	"background": {
+
+		"persistent": false,
+		"scripts": [
+
+			"/js/background.js"
+
+		]
+
+	},
+
+	"content_scripts": [
+
+		{
+
+			"all_frames": false,
+
+			"run_at": "document_start",
+
+			"matches": [
+
+				"https://www.twitch.tv/*"
+
+			],
+
+			"js": [
+
+				"/lib/jquery.min.js",
+				"/js/content.js"
+
+			]
+
+		}
+
+	],
+
+	"permissions": [
+
+		"storage",
+		"https://www.youtube.com/*"
+
+	],
+
+	"web_accessible_resources": [ "/*" ]
+
+}
