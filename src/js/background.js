@@ -42,12 +42,7 @@
 					var response = await fetch( "https://www.youtube.com/c/DrDisRespect" );
 					var text = await response.text();
 
-					console.log( text );
-
 					var match = text.match( /window\[\"ytInitialData\"\] \= (.+);\n/ );
-
-					console.log( match[ 1 ] );
-					console.log( JSON.parse( match[ 1 ] ) );
 
 					var yt_initial_data = JSON.parse( match[ 1 ] );
 					var video_renderer = yt_initial_data.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].channelFeaturedContentRenderer.items[0].videoRenderer;
@@ -64,8 +59,6 @@
 						};
 
 					};
-
-					console.log( "live_flag", video_renderer, live_flag );
 
 					if ( live_flag ) {
 

@@ -71,7 +71,7 @@
 
 		function create_and_render_model () {
 
-			if ( document.querySelector( '.sdrdisrespect-nav-section' ) === null && _state.side_nav_section && _state.stream_data ) {
+			if ( document.querySelector( '.drdisrespect-nav-section' ) === null && _state.side_nav_section && _state.stream_data ) {
 
 				$( _state.side_nav_section ).before( `
 
