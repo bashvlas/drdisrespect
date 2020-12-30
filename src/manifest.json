@@ -4,8 +4,8 @@
 
 	"name": "Dr Disrespect Chrome Extension",
 	"short_name": "DrDisRespect",
-	"version": "1.0.0",
-	"description": "This chrome extesion helps to keep track of the most dominant stream in the online gaming community while browsing twitch.tv",
+	"version": "1.0.1",
+	"description": "This chrome extension helps to keep track of the most dominant stream in the online gaming community while browsing twitch.tv",
 
 	"icons": {
 
@@ -58,7 +58,6 @@
 
 	"permissions": [
 
-		"storage",
 		"https://www.youtube.com/*"
 
 	],

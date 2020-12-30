@@ -33,6 +33,49 @@
 
 		};
 
+		function youtube_page_text_to_video_renderer ( text ) {
+
+			var match_1 = text.match( /window\[\"ytInitialData\"\] \= (.+);\n/ );
+			var match_2 = text.match( /var ytInitialData \= (.+)\;\<\/script\>/ );
+
+			if ( match_1 ) {
+
+				var yt_initial_data = JSON.parse( match_1[ 1 ] );
+
+			} else if ( match_2 ) {
+
+				var yt_initial_data = JSON.parse( match_2[ 1 ] );
+
+			} else {
+
+				return null;
+
+			};
+
+			try {
+
+				var video_renderer_1 = yt_initial_data.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].channelFeaturedContentRenderer.items[0].videoRenderer;
+
+			} catch ( e ) {
+
+				var video_renderer_1 = null;
+
+			};
+
+			try {
+
+				var video_renderer_2 = yt_initial_data.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].shelfRenderer.content.horizontalListRenderer.items[ 0 ].gridVideoRenderer;
+
+			} catch ( e ) {
+
+				var video_renderer_2 = null;
+
+			};
+
+			return video_renderer_1 || video_renderer_2;
+
+		};
+
 		function get_stream_data () {
 
 			return new Promise( async ( resolve ) => {
@@ -42,10 +85,8 @@
 					var response = await fetch( "https://www.youtube.com/c/DrDisRespect" );
 					var text = await response.text();
 
-					var match = text.match( /window\[\"ytInitialData\"\] \= (.+);\n/ );
+					var video_renderer = youtube_page_text_to_video_renderer( text );
 
-					var yt_initial_data = JSON.parse( match[ 1 ] );
-					var video_renderer = yt_initial_data.contents.twoColumnBrowseResultsRenderer.tabs[0].tabRenderer.content.sectionListRenderer.contents[0].itemSectionRenderer.contents[0].channelFeaturedContentRenderer.items[0].videoRenderer;
 					var thumbnail_overlays = video_renderer.thumbnailOverlays;
 					var live_flag = false;
 

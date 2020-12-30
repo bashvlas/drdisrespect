@@ -34,7 +34,7 @@
 
 							<div class="side-nav-card__live-status tw-flex-shrink-0 tw-mg-l-05" data-a-target="side-nav-live-status">
 								<div class="tw-align-items-center tw-flex">
-									<div class="tw-border-radius-rounded tw-channel-status-indicator tw-channel-status-indicator--live tw-channel-status-indicator--small tw-inline-block tw-relative" data-test-selector="0"></div>
+									<div class="ScChannelStatusIndicator-sc-1cf6j56-0 fSVvnY tw-channel-status-indicator" data-test-selector="0"></div>
 									<div class="tw-mg-l-05"><span data-test-selector="1" aria-label="7.4K viewers" class="tw-c-text-alt tw-font-size-6">${ stream_data.view_count_text }</span></div>
 								</div>
 							</div>
